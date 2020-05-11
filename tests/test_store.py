@@ -3,7 +3,7 @@ from abstract_json_storage import AbstractJsonStorage
 from json_store import JsonStore
 
 
-class TestInit(TestCase):
+class TestStore(TestCase):
     def setUp(self):
         self.js = JsonStore()
 
