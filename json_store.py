@@ -1,6 +1,7 @@
 from jsonbin_store import JsonBinStore
 from jsonbox_store import JsonboxStore
 from jsonstorage_store import JsonStorageStore
+from json_mock_store import JsonMockstore
 from requests_futures.sessions import FuturesSession
 
 
@@ -10,9 +11,12 @@ class JsonStore(object):
         self._config_stores()
 
     def _config_stores(self):
-        self.stores.append(JsonBinStore())
-        self.stores.append(JsonboxStore())
-        self.stores.append(JsonStorageStore())
+        self.stores.append(JsonMockstore())
+        self.stores.append(JsonMockstore())
+        self.stores.append(JsonMockstore())
+        # self.stores.append(JsonBinStore())
+        # self.stores.append(JsonboxStore())
+        # self.stores.append(JsonStorageStore())
 
     def create(self, json_data):
         tasks = []

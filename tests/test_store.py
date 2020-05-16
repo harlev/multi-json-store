@@ -13,4 +13,3 @@ class TestStore(TestCase):
 
     def test_create(self):
         self.js.create({"a": 1})
-        pass

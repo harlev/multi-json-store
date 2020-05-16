@@ -16,5 +16,5 @@ class JsonBinStore(AbstractJsonStorage):
 
     def _get_api_root(self):
         # return "https://api.jsonbin.io/v3"
-        return "https://reqres.in/api/users"
+        return "https://reqres.in"
 

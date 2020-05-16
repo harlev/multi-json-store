@@ -1,12 +1,12 @@
 from abstract_json_storage import AbstractJsonStorage
 
 
-class JsonboxStore(AbstractJsonStorage):
+class JsonMockstore(AbstractJsonStorage):
     def __init__(self):
         super().__init__()
 
     def create(self, json_data, session):
-        return session.post(f"{self._get_api_root()}/api/users?delay=5")
+        return session.post(f"{self._get_api_root()}/api/users?delay=2", json_data)
 
     async def update(self, store_id, json_data):
         pass
@@ -15,5 +15,5 @@ class JsonboxStore(AbstractJsonStorage):
         pass
 
     def _get_api_root(self):
-        # return "https://jsonbox.io"
         return "https://reqres.in"
+
