@@ -20,3 +20,6 @@ class AbstractJsonStorage(ABC):
     @abstractmethod
     def _get_api_root(self):
         pass
+
+    def _post(self, session, api_route, json_data):
+        return session.post(f"{self._get_api_root()}{api_route}", json_data)

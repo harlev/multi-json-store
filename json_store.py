@@ -24,10 +24,14 @@ class JsonStore(object):
         for store in self.stores:
             tasks.append(store.create(json_data, session))
 
+        results = []
         for task in tasks:
-            print(task.result().content)
+            result = task.result().content
+            results.append(result)
+            print(result)
 
         session.close()
+        return results
 
     def update(self, store_id):
         pass

@@ -6,7 +6,7 @@ class JsonMockstore(AbstractJsonStorage):
         super().__init__()
 
     def create(self, json_data, session):
-        return session.post(f"{self._get_api_root()}/api/users?delay=2", json_data)
+        return self._post(session, "/api/users?delay=2", json_data)
 
     async def update(self, store_id, json_data):
         pass
