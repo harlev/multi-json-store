@@ -18,11 +18,12 @@ class JsonStore(object):
         # self.stores.append(JsonboxStore())
         # self.stores.append(JsonStorageStore())
 
-    def create(self, json_data):
+    def _parallel_request(self, method_name, json_data):
         tasks = []
         session = FuturesSession()
         for store in self.stores:
-            tasks.append(store.create(json_data, session))
+            func = getattr(store, method_name)
+            tasks.append(func(json_data, session))
 
         results = []
         for task in tasks:
@@ -32,6 +33,9 @@ class JsonStore(object):
 
         session.close()
         return results
+
+    def create(self, json_data):
+        return self._parallel_request("create", json_data)
 
     def update(self, store_id):
         pass
