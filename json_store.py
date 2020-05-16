@@ -35,7 +35,8 @@ class JsonStore(object):
     def _get_result_object(task: RequestTask):
         return {
             "service_name": task.get_name(),
-            "result": task.get_task().result().content
+            "result": task.get_task().result().content,
+            "status_code": task.get_task().result().status_code
         }
 
     def _async_request(self, method_name, json_data):
