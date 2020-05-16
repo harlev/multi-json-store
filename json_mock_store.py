@@ -5,6 +5,9 @@ class JsonMockstore(AbstractJsonStorage):
     def __init__(self):
         super().__init__()
 
+    def get_name(self):
+        return "reqres.in"
+
     def create(self, json_data, session):
         return self._post(session, "/api/users?delay=2", json_data)
 

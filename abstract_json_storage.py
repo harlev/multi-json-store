@@ -6,6 +6,10 @@ class AbstractJsonStorage(ABC):
         pass
 
     @abstractmethod
+    def get_name(self):
+        pass
+
+    @abstractmethod
     def create(self, json_data, session):
         pass
 
