@@ -3,15 +3,18 @@ from abstract_json_storage import AbstractJsonStorage
 
 class JsonBinStore(AbstractJsonStorage):
     def __init__(self):
-        self.homepage = "https://jsonbin.io/"
         super().__init__()
-        
-    def create(self, json_data):
+
+    def create(self, json_data, session):
+        return session.post(f"{self._get_api_root()}/api/users?delay=5")
+
+    async def update(self, store_id, json_data):
         pass
 
-    def update(self, store_id, json_data):
+    async def read(self, store_id):
         pass
 
-    def read(self, store_id):
-        pass
+    def _get_api_root(self):
+        # return "https://api.jsonbin.io/v3"
+        return "https://reqres.in/api/users"
 

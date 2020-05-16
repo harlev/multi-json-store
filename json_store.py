@@ -1,6 +1,7 @@
 from jsonbin_store import JsonBinStore
 from jsonbox_store import JsonboxStore
 from jsonstorage_store import JsonStorageStore
+from requests_futures.sessions import FuturesSession
 
 
 class JsonStore(object):
@@ -13,8 +14,16 @@ class JsonStore(object):
         self.stores.append(JsonboxStore())
         self.stores.append(JsonStorageStore())
 
-    def create(self):
-        pass
+    def create(self, json_data):
+        tasks = []
+        session = FuturesSession()
+        for store in self.stores:
+            tasks.append(store.create(json_data, session))
+
+        for task in tasks:
+            print(task.result().content)
+
+        session.close()
 
     def update(self, store_id):
         pass

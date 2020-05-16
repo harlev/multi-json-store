@@ -1,1 +1,1 @@
-grequests
+requests_futures

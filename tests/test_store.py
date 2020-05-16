@@ -10,3 +10,7 @@ class TestStore(TestCase):
     def test_init_storage(self):
         for store in self.js.stores:
             isinstance(store, AbstractJsonStorage)
+
+    def test_create(self):
+        self.js.create({"a": 1})
+        pass
