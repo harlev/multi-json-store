@@ -25,5 +25,6 @@ class AbstractJsonStorage(ABC):
     def _get_api_root(self):
         pass
 
-    def _post(self, session, api_route, json_data):
-        return session.post(f"{self._get_api_root()}{api_route}", json_data)
+    def _request(self, session, method_name, api_route, json_data):
+        func = getattr(session, method_name)
+        return func(f"{self._get_api_root()}{api_route}", json_data)
