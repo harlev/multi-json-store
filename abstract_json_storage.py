@@ -10,15 +10,15 @@ class AbstractJsonStorage(ABC):
         pass
 
     @abstractmethod
-    def create(self, json_data, session):
+    def create(self, session, json_data=None, store_id=None):
         pass
 
     @abstractmethod
-    async def update(self, store_id, json_data):
+    async def update(self, session, json_data=None, store_id=None):
         pass
 
     @abstractmethod
-    def read(self, store_id, session):
+    def read(self, session, json_data=None, store_id=None):
         pass
 
     @abstractmethod

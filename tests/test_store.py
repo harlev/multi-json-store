@@ -16,3 +16,6 @@ class TestStore(TestCase):
 
     def test_read(self):
         self.js.read("123fgf")
+
+    def test_update(self):
+        self.js.update("123fgf", {"a": 1})

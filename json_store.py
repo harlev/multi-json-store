@@ -39,12 +39,12 @@ class JsonStore(object):
             "status_code": task.get_task().result().status_code
         }
 
-    def _async_request(self, method_name, json_data):
+    def _async_request(self, method_name, store_id=None, json_data=None):
         tasks = []
         session = FuturesSession()
         for store in self.stores:
             func = getattr(store, method_name)
-            request_task = RequestTask(store.get_name(), func(json_data, session))
+            request_task = RequestTask(store.get_name(), func(session, json_data=json_data, store_id=store_id))
             tasks.append(request_task)
 
         results = []
@@ -57,10 +57,10 @@ class JsonStore(object):
         return results
 
     def create(self, json_data):
-        return self._async_request("create", json_data)
+        return self._async_request("create", json_data=json_data)
 
-    def update(self, store_id):
-        pass
+    def update(self, store_id, json_data):
+        return self._async_request("update", store_id=store_id, json_data=json_data)
 
     def read(self, store_id):
-        return self._async_request("read", store_id)
+        return self._async_request("read", store_id=store_id)
