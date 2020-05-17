@@ -18,13 +18,13 @@ class AbstractJsonStorage(ABC):
         pass
 
     @abstractmethod
-    async def read(self, store_id):
+    def read(self, store_id, session):
         pass
 
     @abstractmethod
     def _get_api_root(self):
         pass
 
-    def _request(self, session, method_name, api_route, json_data):
+    def _request(self, session, method_name, api_route, json_data=None):
         func = getattr(session, method_name)
-        return func(f"{self._get_api_root()}{api_route}", json_data)
+        return func(f"{self._get_api_root()}{api_route}", data=json_data)

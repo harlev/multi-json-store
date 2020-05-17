@@ -63,4 +63,4 @@ class JsonStore(object):
         pass
 
     def read(self, store_id):
-        pass
+        return self._async_request("read", store_id)

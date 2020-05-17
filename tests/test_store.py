@@ -13,3 +13,6 @@ class TestStore(TestCase):
 
     def test_create(self):
         self.js.create({"a": 1})
+
+    def test_read(self):
+        self.js.read("123fgf")
