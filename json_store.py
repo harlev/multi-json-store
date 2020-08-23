@@ -33,6 +33,7 @@ class JsonStore(object):
         # self.stores.append(JsonBinStore())
         # self.stores.append(JsonboxStore())
         # self.stores.append(JsonStorageStore())
+        # self.stores.append(PantryStore())
 
     @staticmethod
     def _get_result_object(task: RequestTask, method_name):
