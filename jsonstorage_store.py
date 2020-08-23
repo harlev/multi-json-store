@@ -5,16 +5,19 @@ class JsonStorageStore(AbstractJsonStorage):
     def __init__(self):
         super().__init__()
         
-    def create(self, json_data, session):
-        return session.post(f"{self._get_api_root()}/api/users?delay=5")
+    def get_name(self):
+        return "jsonstorage.net"
 
-    async def update(self, store_id, json_data):
-        pass
+    def create(self, session, json_data=None, store_id=None):
+        return self._request(session, "post", "/api/items", json_data)
 
-    async def read(self, store_id):
-        pass
+    def update(self, session, json_data=None, store_id=None):
+        return self._request(session, "put", "/api/users/2", json_data)
+
+    def read(self, session, json_data=None, store_id=None):
+        return self._request(session, "get", "/api/users/2")
 
     def _get_api_root(self):
         # return "https://jsonstorage.net/api"
-        return "https://reqres.in"
+        return "https://jsonstorage.net"
 
