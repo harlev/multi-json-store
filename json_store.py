@@ -27,9 +27,9 @@ class JsonStore(object):
         self._config_stores()
 
     def _config_stores(self):
-        self.stores.append(JsonMockstore())
-        self.stores.append(JsonMockstore())
-        self.stores.append(JsonMockstore())
+        self.stores.append(JsonStorageStore())
+        # self.stores.append(JsonMockstore())
+        # self.stores.append(JsonMockstore())
         # self.stores.append(JsonBinStore())
         # self.stores.append(JsonboxStore())
         # self.stores.append(JsonStorageStore())
@@ -37,16 +37,17 @@ class JsonStore(object):
 
     @staticmethod
     def _get_result_object(task: RequestTask, method_name):
-        task.store.result_callback(method_name, task.get_task().result().content)
+        task.store.result_callback(method_name, task.get_task().result().text)
         return {
             "service_name": task.get_name(),
-            "result": task.get_task().result().content,
+            "result": task.get_task().result().text,
             "status_code": task.get_task().result().status_code,
         }
 
     def _async_request(self, method_name, store_id=None, json_data=None):
         tasks = []
         session = FuturesSession()
+        session.headers['Content-Type'] = 'application/json'
         for store in self.stores:
             func = getattr(store, method_name)
             request_task = RequestTask(store, func(session, json_data=json_data, store_id=store_id), method_name)
@@ -64,8 +65,8 @@ class JsonStore(object):
     def create(self, json_data):
         return self._async_request("create", json_data=json_data)
 
-    def update(self, store_id, json_data):
+    def update(self, json_data, store_id=None):
         return self._async_request("update", store_id=store_id, json_data=json_data)
 
-    def read(self, store_id):
+    def read(self, store_id=None):
         return self._async_request("read", store_id=store_id)
