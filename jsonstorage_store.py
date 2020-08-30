@@ -26,6 +26,8 @@ class JsonStorageStore(AbstractJsonStorage):
             path_parts = urlparse(content["uri"])
             object_id = path_parts.path
             self._set_store_id(object_id)
+        elif method_name == "read":
+            return result_content
 
     def _get_api_root(self):
         # return "https://jsonstorage.net/api"

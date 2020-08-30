@@ -27,20 +27,20 @@ class JsonStore(object):
         self._config_stores()
 
     def _config_stores(self):
-        self.stores.append(JsonStorageStore())
         # self.stores.append(JsonMockstore())
         # self.stores.append(JsonMockstore())
-        # self.stores.append(JsonBinStore())
+        # self.stores.append(JsonMockstore())
+        self.stores.append(JsonBinStore())
         # self.stores.append(JsonboxStore())
         # self.stores.append(JsonStorageStore())
         # self.stores.append(PantryStore())
 
     @staticmethod
     def _get_result_object(task: RequestTask, method_name):
-        task.store.result_callback(method_name, task.get_task().result().text)
+        result = task.store.result_callback(method_name, task.get_task().result().text)
         return {
             "service_name": task.get_name(),
-            "result": task.get_task().result().text,
+            "result": result,
             "status_code": task.get_task().result().status_code,
         }
 
