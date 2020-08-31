@@ -1,6 +1,6 @@
 from jsonbin_store import JsonBinStore
-from jsonbox_store import JsonboxStore
 from jsonstorage_store import JsonStorageStore
+from pantry_store import PantryStore
 from abstract_json_storage import AbstractJsonStorage
 from json_mock_store import JsonMockstore
 from requests_futures.sessions import FuturesSession
@@ -30,10 +30,10 @@ class JsonStore(object):
         # self.stores.append(JsonMockstore())
         # self.stores.append(JsonMockstore())
         # self.stores.append(JsonMockstore())
-        self.stores.append(JsonBinStore())
+        # self.stores.append(JsonBinStore())
         # self.stores.append(JsonboxStore())
         # self.stores.append(JsonStorageStore())
-        # self.stores.append(PantryStore())
+        self.stores.append(PantryStore())
 
     @staticmethod
     def _get_result_object(task: RequestTask, method_name):
