@@ -15,7 +15,9 @@ class JsonBinStore(AbstractJsonStorage):
         return self._request(session, "post", "/b", json_data)
 
     def update(self, session, json_data=None, store_id=None):
-        pass
+        session.headers["X-Master-key"] = keys.JSONBIN_API_KEY
+        id = store_id or self.store_id
+        return self._request(session, "put", f"/b/{id}", json_data)
 
     def read(self, session, json_data=None, store_id=None):
         session.headers["X-Master-key"] = keys.JSONBIN_API_KEY
