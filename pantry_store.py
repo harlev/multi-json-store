@@ -17,7 +17,9 @@ class PantryStore(AbstractJsonStorage):
         return self._request(session, "post", f"/pantry/{pantry_id}/basket/{basket_id}", json_data)
 
     def update(self, session, json_data=None, store_id=None):
-        pass
+        pantry_id = keys.PANTRY_ID
+        basket_id = self.store_id
+        return self._request(session, "put", f"/pantry/{pantry_id}/basket/{basket_id}", json_data)
 
     def read(self, session, json_data=None, store_id=None):
         pantry_id = keys.PANTRY_ID
