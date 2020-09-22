@@ -5,6 +5,7 @@ from abstract_json_storage import AbstractJsonStorage
 class JsonMockstore(AbstractJsonStorage):
     def __init__(self):
         super().__init__()
+        self.update_called = False
 
     def get_name(self):
         return "reqres.in"
@@ -23,6 +24,10 @@ class JsonMockstore(AbstractJsonStorage):
             content = json.loads(result_content)
             object_id = content["id"]
             self._set_store_id(object_id)
+        if method_name == "read":
+            return '{"a": 3}' if self.update_called else '{"a": 2}'
+        if method_name == "update":
+            self.update_called = True
 
     def _get_api_root(self):
         return "https://reqres.in"
