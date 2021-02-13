@@ -11,6 +11,22 @@
 
 > Store JSON in multiple stores simultaniously 
 
+The goal of this library is to enable redundency when storing data to a JSON store.  
+There are four built in JSON Storage services
+* https://jsonbox.io/
+* https://jsonbin.io/
+* https://jsonstorage.net/
+* https://getpantry.cloud/
+
+A simple sequence
+```
+js = JsonStore()
+js.create('{"a": 1}')
+js.update('{"a": 3}')
+js.read()
+```
+will result, as expected, in a sequence of create/update/read to all four storage services
+
 ## Author
 
 👤 **Ron Harlev**
