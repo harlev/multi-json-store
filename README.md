@@ -29,6 +29,14 @@ will result, as expected, in a sequence of create/update/read to all four storag
 
 Run the simple [tests](https://github.com/harlev/multi-json-store/blob/master/tests/test_store.py) to see it in action
 
+## Setup
+Popoulate `keys.py` with the keys from the different services.
+
+## Extending
+Other services which implement a REST API for JSON storage could be added.  
+Extend `AbstractJsonStorage` and implement all the `@abstractmethod`.  
+Follow the examples in the existing implementations. The designs attempts to make the code needed as minimal as possible.
+
 ## Author
 
 👤 **Ron Harlev**
