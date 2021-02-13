@@ -23,7 +23,7 @@ class TestStore(TestCase):
 
     def test_update(self):
         self.js.create('{"a": 2}')
-        self.js.update(json_data='{"a": 3}')
+        self.js.update('{"a": 3}')
         results = self.js.read()
         for result in results:
             self.assertDictEqual({"a": 3}, json.loads(result["result"]))
