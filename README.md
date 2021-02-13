@@ -27,6 +27,8 @@ js.read()
 ```
 will result, as expected, in a sequence of create/update/read to all four storage services
 
+Run the simple [tests](https://github.com/harlev/multi-json-store/blob/master/tests/test_store.py) to see it in action
+
 ## Author
 
 👤 **Ron Harlev**
