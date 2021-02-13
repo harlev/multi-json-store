@@ -55,7 +55,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2020 [Ron Harlev](https://github.com/harlev).<br />
+Copyright © 2021 [Ron Harlev](https://github.com/harlev).<br />
 This project is [MIT](https://github.com/harlev/multi-json-store/blob/master/LICENSE) licensed.
 
 ***
