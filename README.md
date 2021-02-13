@@ -41,7 +41,6 @@ Follow the examples in the existing implementations. The designs attempts to mak
 
 👤 **Ron Harlev**
 
-* Website: https://www.linkedin.com/in/harlev
 * Twitter: [@harlev](https://twitter.com/harlev)
 * Github: [@harlev](https://github.com/harlev)
 * LinkedIn: [@harlev](https://linkedin.com/in/harlev)
